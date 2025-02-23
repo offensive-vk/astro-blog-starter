@@ -1,0 +1,36 @@
+name: CI / Build & Test
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  job:
+    runs-on: ${{ matrix.os }}
+    continue-on-error: true
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [18.x, 19.x, 20.x, 21.x, 22.x]
+        version: [10.1, 10.2, 10.3, 10.4]
+
+    name: ${{ matrix.os }} - v${{ matrix.node-version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup pnpm@v9
+        run: npm i -g pnpm@${{matrix.version}}; pnpm -v
+      - run: pnpm i
+      - run: pnpm run build
