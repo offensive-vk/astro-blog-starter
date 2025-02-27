@@ -1,6 +1,6 @@
-# Astro Starter Kit: Blog
+# Astro Blog Starter
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+![Astro Template Preview](./public/site-banner.png)
 
 <!-- dash-content-start -->
 
@@ -25,7 +25,7 @@ Outside of this repo, you can start a new project with this template using [C3](
 pnpm create cloudflare@latest -- --template=cloudflare/templates/dawn-snowflake-8e10
 ```
 
-A live public deployment of this template is available at [https://dawn-snowflake-8e10.templates.workers.dev](https://dawn-snowflake-8e10.templates.workers.dev)
+A live public deployment of this template is available at [https://dawn-snowflake-8e10.ntsystems.workers.dev](https://dawn-snowflake-8e10.ntsystems.workers.dev)
 
 ## 🚀 Project Structure
 
